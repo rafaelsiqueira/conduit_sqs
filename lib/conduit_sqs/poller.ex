@@ -88,7 +88,7 @@ defmodule ConduitSQS.Poller do
         Process.send(self(), :get_messages, [])
 
       true ->
-        Process.send_after(self(), :get_messages, 200)
+        Process.send_after(self(), :get_messages, 5000)
     end
 
     {:noreply, messages, %{state | demand: new_demand}, :hibernate}
